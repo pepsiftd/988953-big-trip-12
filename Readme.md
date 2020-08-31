@@ -1,7 +1,7 @@
 # Личный проект «Большое путешествие» [![Build status][travis-image]][travis-url]
 
-* Студент: [Владимир Санников](https://up.htmlacademy.ru/ecmascript/12/user/988953).
-* Наставник: `Неизвестно`.
+* Студент: [Владимир Санников](https://up.htmlacademy.ru/ecmascript/11/user/988953).
+* Наставник: [Игорь Тараканов](https://up.htmlacademy.ru/ecmascript/11/user/487569).
 
 ---
 
@@ -48,5 +48,5 @@ git clone SSH-адрес_вашего_форка
 
 Репозиторий создан для обучения на интенсивном онлайн‑курсе «[Профессиональный JavaScript, уровень 2](https://htmlacademy.ru/intensive/ecmascript)» от [HTML Academy](https://htmlacademy.ru).
 
-[travis-image]: https://travis-ci.com/htmlacademy-ecmascript/988953-big-trip-12.svg?branch=master
-[travis-url]: https://travis-ci.com/htmlacademy-ecmascript/988953-big-trip-12
+[travis-image]: https://travis-ci.com/htmlacademy-ecmascript/988953-big-trip-11.svg?branch=master
+[travis-url]: https://travis-ci.com/htmlacademy-ecmascript/988953-big-trip-11
