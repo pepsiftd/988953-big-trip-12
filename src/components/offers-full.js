@@ -1,13 +1,11 @@
-import {getRandomInteger} from '@/utils/common';
-
-const createOfferSelectorMarkup = (offer, selectedOffers) => {
+const createOfferSelectorMarkup = (index, offer, selectedOffers) => {
   const {title, price} = offer;
 
   const name = title.split(` `).reduce((result, nextWord) => {
     return result.length > nextWord.length ? result : nextWord;
   });
 
-  const id = name + ` - ` + getRandomInteger(0, 99);
+  const id = `${name}-${index}`;
   const isCheckedMarkup = selectedOffers.some((it) => {
     return it.title === offer.title && it.price === offer.price;
   }) ? `checked` : ``;
@@ -25,7 +23,7 @@ const createOfferSelectorMarkup = (offer, selectedOffers) => {
 };
 
 export const createOfferSelectorsMarkup = (selectedOffers, availableOffers) => {
-  const offersMarkup = availableOffers.map((offer) => createOfferSelectorMarkup(offer, selectedOffers)).join(`\n`);
+  const offersMarkup = availableOffers.map((offer, index) => createOfferSelectorMarkup(index, offer, selectedOffers)).join(`\n`);
 
   return (
     `<section class="event__section  event__section--offers">

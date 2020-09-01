@@ -46,10 +46,6 @@ const getAvailableOffersByType = (offersData, type) => {
   return offersData.TRANSFER.get(type) ? offersData.TRANSFER.get(type) : offersData.ACTIVITY.get(type);
 };
 
-const getRandomInteger = (min, max) => {
-  return min + Math.round(Math.random() * (max - min));
-};
-
 const enableNewEventButton = () => {
   document.querySelector(`.trip-main__event-add-btn`).disabled = false;
 };
@@ -77,7 +73,6 @@ export {
   capitalizeFirstLetter,
   getEventTypeMarkup,
   getAvailableOffersByType,
-  getRandomInteger,
   enableNewEventButton,
   disableNewEventButton,
   generateId,
