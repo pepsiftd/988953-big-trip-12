@@ -47,9 +47,7 @@ export default class TripController {
       return;
     }
 
-    this._eventControllers.forEach((it) => {
-      it.setDefaultView();
-    });
+    this.setDefaultViewAll();
 
     this._sortController.resetSortType();
 
@@ -70,6 +68,18 @@ export default class TripController {
   updateEvents() {
     this._clearEvents();
     this._renderEvents();
+  }
+
+  setDefaultViewAll() {
+    this._eventControllers.forEach((it) => {
+      it.setDefaultView();
+    });
+
+    if (this._creatingEvent) {
+      this._creatingEvent.destroy();
+      this._creatingEvent = null;
+      enableNewEventButton();
+    }
   }
 
   _createEvent(eventController, event) {
@@ -229,9 +239,7 @@ export default class TripController {
   }
 
   _onViewChange() {
-    this._eventControllers.forEach((it) => {
-      it.setDefaultView();
-    });
+    this.setDefaultViewAll();
   }
 
   _onFilterChange() {
