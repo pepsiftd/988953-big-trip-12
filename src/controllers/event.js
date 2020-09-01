@@ -94,6 +94,7 @@ class Event {
     if (oldEventComponent && oldEditEventComponent) {
       replace(this._eventComponent, oldEventComponent);
       replace(this._editEventComponent, oldEditEventComponent);
+      oldEditEventComponent.removeElement();
     } else if (this._mode === Mode.ADDING) {
       document.addEventListener(`keydown`, this._escPressHandler);
 
