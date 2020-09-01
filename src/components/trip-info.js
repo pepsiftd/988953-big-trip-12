@@ -1,5 +1,6 @@
 import {sortByStartDate} from '@/utils/sort';
 import AbstractComponent from '@/components/abstract-component';
+import moment from 'moment';
 
 const getTripTitle = (sortedEvents = []) => {
   if (sortedEvents.length < 1) {
@@ -43,16 +44,18 @@ const getTripTitle = (sortedEvents = []) => {
 
 const getTripTitleAndDates = (events) => {
   const sortedEvents = sortByStartDate(events);
+  const tripStartDate = sortedEvents[0].dateStart;
+  const tripEndDate = sortedEvents[sortedEvents.length - 1].dateEnd;
+  const isSameMonth = tripStartDate.getMonth() === tripEndDate.getMonth();
 
   const infoTitle = getTripTitle(sortedEvents);
-  const tripStartDate = sortedEvents[0] ? sortedEvents[0].dateStart.toString().slice(4, 10) : ``;
-  const tripEndDate = sortedEvents[sortedEvents.length - 1] ? sortedEvents[sortedEvents.length - 1].dateEnd.toString().slice(4, 10) : ``;
-  const endDate = tripStartDate.slice(0, 3) === tripEndDate.slice(0, 3) ? tripEndDate.slice(4) : tripEndDate;
+  const startDateMarkup = moment(tripStartDate).format(`MMM DD`);
+  const endDateMarkup = isSameMonth ? moment(tripEndDate).format(`DD`) : moment(tripEndDate).format(`MMM DD`);
 
   return (
     `<h1 class="trip-info__title">${infoTitle}</h1>
 
-    <p class="trip-info__dates">${tripStartDate}&nbsp;&mdash;&nbsp;${endDate}</p>`
+    <p class="trip-info__dates">${startDateMarkup}&nbsp;&mdash;&nbsp;${endDateMarkup}</p>`
   );
 };
 

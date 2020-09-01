@@ -1,8 +1,9 @@
 import AbstractComponent from '@/components/abstract-component';
+import moment from 'moment';
 
 const createDayTemplate = (day, counter) => {
   const dayCounterMarkup = counter ? `<span class="day__counter">${counter}</span>` : ``;
-  const dayDateMarkup = day ? `<time class="day__date" datetime="${day.toISOString(). slice(0, 10)}">${day.toString().slice(4, 10)}</time>` : ``;
+  const dayDateMarkup = day ? `<time class="day__date" datetime="${moment(day).format(`YYYY-MM-DD`)}">${moment(day).format(`MMM DD`)}</time>` : ``;
 
   return (
     `<li class="trip-days__item  day">
