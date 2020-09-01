@@ -31,15 +31,15 @@ export default class TripTabs extends AbstractSmartComponent {
   }
 
   setChangeTabHandler(handler) {
+    this._changeTabHandler = handler;
+
     this.getElement().addEventListener(`click`, (evt) => {
       const selectedTabName = evt.target.dataset.name;
-
-      this._changeTabHandler = handler;
 
       if (this._activeTab !== selectedTabName) {
         this._activeTab = selectedTabName;
         this.rerender();
-        handler(selectedTabName);
+        this._changeTabHandler(selectedTabName);
       }
     });
   }

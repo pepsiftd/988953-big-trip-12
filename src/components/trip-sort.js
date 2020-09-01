@@ -77,6 +77,8 @@ export default class TripSort extends AbstractSmartComponent {
   }
 
   setSortTypeChangeHandler(handler) {
+    this._sortTypeChangeHandler = handler;
+
     this.getElement().addEventListener(`change`, (evt) => {
       const sortType = evt.target.value.substring(SORT_TYPE_PREFIX.length);
 
@@ -84,11 +86,10 @@ export default class TripSort extends AbstractSmartComponent {
         return;
       }
 
-      this._sortTypeChangeHandler = handler;
       this._activeSortType = sortType;
       this.rerender();
 
-      handler(sortType);
+      this._sortTypeChangeHandler(sortType);
     });
   }
 }
