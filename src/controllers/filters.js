@@ -3,11 +3,6 @@ import {getEventsByFilter} from '@/utils/filter';
 import {render, replace, RenderPosition} from '@/utils/render';
 import {FilterType} from '@/const';
 
-const FILTER_ID_PREFIX = `filter-`;
-
-const getFilterNameById = (id) => {
-  return id.substring(FILTER_ID_PREFIX.length);
-};
 
 export default class Filters {
   constructor(container, eventsModel) {
@@ -30,13 +25,13 @@ export default class Filters {
     }
 
     this._activeFilter = filterType;
-    this._onFilterChange({target: {id: filterType}});
+    this._onFilterChange({target: {value: filterType}});
     this.render();
   }
 
   render() {
     const oldFilterComponent = this._filtersComponent;
-    this._filtersComponent = new FiltersComponent(this._isFutureEmpty, this._isPastEmpty);
+    this._filtersComponent = new FiltersComponent(this._isFutureEmpty, this._isPastEmpty, this._activeFilter);
 
     if (oldFilterComponent) {
       replace(this._filtersComponent, oldFilterComponent);
@@ -54,7 +49,7 @@ export default class Filters {
   }
 
   _onFilterChange(evt) {
-    const selectedFilter = getFilterNameById(evt.target.id);
+    const selectedFilter = evt.target.value;
 
     this._eventsModel.setActiveFilter(selectedFilter);
     this._activeFilter = selectedFilter;
