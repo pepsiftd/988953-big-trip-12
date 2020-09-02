@@ -1,7 +1,7 @@
 import Event from '@/models/event-model';
 
 const SERVER_URL = `https://12.ecmascript.pages.academy/big-trip/`;
-const AUTHORIZATION = `Basic gb1s4h387jh654a`;
+const AUTHORIZATION = `Basic gw1s4h387jh654a`;
 
 const URL = {
   EVENTS: `points`,
